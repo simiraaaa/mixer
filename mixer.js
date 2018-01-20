@@ -72,13 +72,14 @@ var mixer = {
   },
 
   add: function(name, supers, props, descMap) {
-    if (typeof supers === 'undefined') {
+    if (typeof supers === 'string') {
+      supers = [supers];
+    }
+
+    if (!Array.isArray(supers)) {
       descMap = props;
       props = supers;
       supers = null;
-    }
-    if (typeof supers === 'string') {
-      supers = [supers];
     }
     this._objects[name] = {
       __mixerName: name,
