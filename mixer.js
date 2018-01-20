@@ -127,5 +127,17 @@ var mixer = {
       mixer.extend(mixer.get(this.name).props, property);
       return this;
     }
-  }
+  },
+
+  defineMix: function(target, name) {
+    Object.defineProperty(target, name || '$mix', {
+      value: function(name) {
+        return mixer.mix(this, name);
+      },
+      enumerable: false,
+      configurable: true,
+      writable: true,
+    });
+    return target;
+  },
 };
