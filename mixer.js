@@ -55,6 +55,7 @@ var mixer = {
 
     circulator = circulator || {};
     if (circulator[name]) return {};
+    circulator[name] = true;
     var p = mixer.extend({}, mixer._objects[name] || {});
     var accessor = mixer.extend({}, p.accessor);
     var target = {};
@@ -62,7 +63,6 @@ var mixer = {
       p.supers.forEach(function(parent) {
         mixer.extend(target, mixer.use(parent, circulator));
         // mixer.extend(p.accessor, mixer.getAccessor(parent, circulator));
-        circulator[parent] = true;
       });
     }
     mixer.extend(target, p.props);
