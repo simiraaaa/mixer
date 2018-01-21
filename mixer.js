@@ -66,7 +66,7 @@ var mixer = {
       });
     }
     mixer.extend(target, p.props);
-    mixer.defineAccessor(target, accessor);
+    // mixer.defineAccessor(target, accessor);
     return target;
 
   },
